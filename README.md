@@ -1,24 +1,17 @@
-# README
+Blogs
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Blog
+  title string
 
-Things you may want to cover:
+  has many post 
 
-* Ruby version
+Post
+  title string
+  body  text
+  blog_id fk
 
-* System dependencies
+  belongs to blog
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  title blog
+    title body
+    title body
