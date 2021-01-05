@@ -4,6 +4,13 @@ import { Form } from 'semantic-ui-react';
 class BlogForm extends Component {
   state = { title: ''}
 
+  componentDidMount() {
+    if (this.props.id) {
+      const { title } = this.props
+      this.setState({ title })
+    }
+  }
+
   handleChange = (e) => {
     const { name, value } = e.target
     this.setState({ [name]: value })
@@ -11,7 +18,13 @@ class BlogForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.addBlog(this.state)
+    if (this.props.id) {
+      const { id, updateBlog, toggleEdit } = this.props
+      updateBlog(id, this.state )
+      toggleEdit()
+    } else {
+      this.props.addBlog(this.state)
+    }
     this.setState({ title: '' })
   }
 

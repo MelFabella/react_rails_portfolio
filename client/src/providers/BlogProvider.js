@@ -36,7 +36,20 @@ class BlogProvider extends Component {
 
   updateBlog = (id, blog) => {
     // update to the db
-    // update to the state
+    axios.put(`/api/blogs/${id}`, { blog })
+    .then( res => {
+      // update to the state
+      const blogs = this.state.blogs.map( b => {
+        if (b.id === id) {
+          return res.data
+        } 
+        return b
+      })
+      this.setState({ blogs })
+    })
+    .catch( err => {
+      console.log(err);
+    })
   }
 
   deleteBlog = (id) => {

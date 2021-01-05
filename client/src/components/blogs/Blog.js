@@ -3,6 +3,7 @@ import Posts from '../posts/Posts';
 import axios from 'axios';
 import { BlogConsumer } from '../../providers/BlogProvider';
 import { Button, Icon } from 'semantic-ui-react';
+import BlogForm from './BlogForm';
 
 class Blog extends Component {
   state = { id: 0, title: '', created_at: '', updated_at: '', editing: false }
@@ -18,9 +19,14 @@ class Blog extends Component {
       });
   }
 
+  toggleEdit = () => {
+    const { editing } = this.state 
+    this.setState({ editing: !editing })
+  }
+
   render() {
     const { id, title, updated_at, editing } = this.state
-    const { deleteBlog } = this.props
+    const { deleteBlog, updateBlog } = this.props
     return(
       <>
         <h1>{title}</h1>
@@ -28,6 +34,19 @@ class Blog extends Component {
         <Button icon color = 'red' onClick={() => deleteBlog(id)}>
           <Icon name='trash' />
         </Button>
+        { 
+          editing ? 
+            <BlogForm 
+              id={id}
+              title={title}
+              toggleEdit={this.toggleEdit}
+              updateBlog={updateBlog}
+            />
+          :
+          <Button icon color='yellow' onClick={() => this.toggleEdit()}>
+            <Icon name='pencil' />
+          </Button>
+        }
         {/*<Posts blogId={this.props.id} /> */}
       </>
     )
