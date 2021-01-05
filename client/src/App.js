@@ -5,6 +5,7 @@ import Skills from './components/shared/Skills';
 import NoMatch from './components/shared/NoMatch';
 import Navbar from './components/shared/Navbar';
 import MyBlog from './components/blogs/MyBlog';
+import Blog from './components/blogs/Blog';
 
 
 const App = () => (
@@ -15,6 +16,7 @@ const App = () => (
       <Route exact path='/about' component={About} />
       <Route exact path='/skills' component={Skills} />
       <Route exact path='/myblog' component={MyBlog} />
+      <Route exact path='/blog/:id' component={Blog} />
       <Route component={NoMatch} />
     </Switch>
   </>

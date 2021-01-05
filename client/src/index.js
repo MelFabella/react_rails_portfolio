@@ -5,12 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'semantic-ui-css/semantic.min.css';
 import { BrowserRouter } from 'react-router-dom';
+import BlogProvider from './providers/BlogProvider';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <BlogProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </BlogProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
