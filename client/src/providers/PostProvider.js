@@ -10,9 +10,8 @@ class PostProvider extends Component {
 
   getAllBlogPost = (blogId) => {
     axios.get(`/api/blogs/${blogId}/posts`)
-    .then( res => {
-      const { posts } = this.state 
-      this.setState({ posts: [...posts, res.data ]})
+    .then( res => { 
+      this.setState({ posts: res.data })
     })
       .catch( err => {
         console.log(err);

@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { PostConsumer } from '../../providers/PostProvider';
 import PostForm from './PostForm';
-// import PostList from './PostList';
+import PostList from './PostList';
 
 class Posts extends Component {
   componentDidMount() {
@@ -17,12 +17,12 @@ class Posts extends Component {
           blogId={blogId}
           addPost={addPost}
         />
-        {/* <PostList  
+        <PostList  
           blogId={blogId}
           posts={posts}
-          deletePost={deletePost}
-          updatePost={updatePost}
-        /> */}
+          // deletePost={deletePost}
+          // updatePost={updatePost}
+        />
       </>
     )
   }

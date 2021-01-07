@@ -27,6 +27,7 @@ class Blog extends Component {
   render() {
     const { id, title, updated_at, editing } = this.state
     const { deleteBlog, updateBlog } = this.props
+    let blogId = this.props.match.params.id
     return(
       <>
         <h1>{title}</h1>
@@ -47,7 +48,7 @@ class Blog extends Component {
             <Icon name='pencil' />
           </Button>
         }
-        <Posts blogId={id} />
+        <Posts blogId={blogId} />
       </>
     )
   }
