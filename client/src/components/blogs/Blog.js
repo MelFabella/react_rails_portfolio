@@ -47,7 +47,7 @@ class Blog extends Component {
             <Icon name='pencil' />
           </Button>
         }
-        {/*<Posts blogId={this.props.id} /> */}
+        <Posts blogId={id} />
       </>
     )
   }

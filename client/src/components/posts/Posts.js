@@ -1,24 +1,42 @@
 import { Component } from 'react';
-import axios from 'axios';
+import { PostConsumer } from '../../providers/PostProvider';
+import PostForm from './PostForm';
+// import PostList from './PostList';
 
 class Posts extends Component {
-  state = { posts: [] }
-
   componentDidMount() {
-    axios.get(`/api/blogs/${this.props.blogId}/posts`)
-    .then( res => {
-      const { posts } = this.state 
-      this.setState({ posts: [...posts, res.data ]})
-    })
+    const { getAllBlogPost, blogId } = this.props 
+    getAllBlogPost(blogId)
   }
   
   render() {
+    const { blogId, addPost, posts, deletePost, updatePost } = this.props
     return(
       <>
-
+        <PostForm 
+          blogId={blogId}
+          addPost={addPost}
+        />
+        {/* <PostList  
+          blogId={blogId}
+          posts={posts}
+          deletePost={deletePost}
+          updatePost={updatePost}
+        /> */}
       </>
     )
   }
-}
+} 
 
-export default Posts;
+const ConnectedPosts = (props) => (
+  <PostConsumer>
+   { value =>
+    <Posts 
+      {...value}
+      {...props}
+    />
+   } 
+  </PostConsumer>
+)
+
+export default ConnectedPosts;
