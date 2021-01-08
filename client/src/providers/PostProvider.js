@@ -29,13 +29,24 @@ class PostProvider extends Component {
       })
   }
 
+  deletePost = (blogId, id) => {
+    axios.delete(`/api/blogs/${blogId}/posts/${id}`)
+      .then( res => {
+        const { posts } = this.state 
+        this.setState({ posts: posts.filter( p => p.id !== id)})
+      })
+      .catch( err => {
+        console.log(err);
+      })
+  }
+
   render() {
     return(
       <PostContext.Provider value={{
         ...this.state,
       getAllBlogPost: this.getAllBlogPost,
       addPost: this.addPost,
-      // deleteItem: this.deleteItem,
+      deletePost: this.deletePost,
       // updateItem: this.updateItem,
       }}>
         { this.props.children }

@@ -20,7 +20,7 @@ class Posts extends Component {
         <PostList  
           blogId={blogId}
           posts={posts}
-          // deletePost={deletePost}
+          deletePost={deletePost}
           // updatePost={updatePost}
         />
       </>

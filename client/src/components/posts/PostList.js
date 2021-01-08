@@ -1,10 +1,10 @@
 import { Component } from 'react';
-import { Grid, Card, Image } from 'semantic-ui-react';
+import { Grid, Card, Image, Button } from 'semantic-ui-react';
 
 class PostList extends Component {
   
   render() {
-    const { posts } = this.props
+    const { posts, deletePost, blogId } = this.props
     return(
       <Grid columns={3}>
         {
@@ -18,11 +18,9 @@ class PostList extends Component {
                     {p.body}
                   </Card.Description>
                 </Card.Content>
-                {/* </Card.Content extra>
-                  <a>
-                    22 Friends
-                  </a>
-                </Card.Content> */}
+                <Card.Content extra>
+                    <Button icon='trash' color='red' onClick={() => deletePost(blogId, p.id)} />
+                </Card.Content>
               </Card>
             </Grid.Column>
           )
