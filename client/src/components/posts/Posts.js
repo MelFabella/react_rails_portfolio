@@ -21,7 +21,7 @@ class Posts extends Component {
           blogId={blogId}
           posts={posts}
           deletePost={deletePost}
-          // updatePost={updatePost}
+          updatePost={updatePost}
         />
       </>
     )

@@ -18,9 +18,12 @@ class PostForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    const { body } = this.state
+    this.setState({ body: (body) })
     if (this.props.id) {
-      const { blogId, updatepost, id, setOpen } = this.props
-      updatepost(blogId, id, this.state)
+      const { blogId, updatePost, id, setOpen } = this.props
+      updatePost(blogId, id, this.state)
+      setOpen(false)
     } else {
       const { addPost, blogId } = this.props
       addPost(blogId, this.state)
@@ -44,8 +47,9 @@ class PostForm extends Component {
           value={body}
           onChange={this.handleChange}
           required
-          label='Text'
-          type="text" 
+          label='Body'
+          // type="text" 
+          // step="0.01"
         />
         <Form.Input
           name='pic'

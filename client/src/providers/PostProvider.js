@@ -40,6 +40,22 @@ class PostProvider extends Component {
       })
   }
 
+  updatePost = (blogId, id, post) => {
+    axios.put(`/api/blogs/${blogId}/posts/${id}`, { post })
+      .then(res => {
+        const posts = this.state.post.map( p => {
+          if (p.id === id) {
+            return res.data
+          }
+          return p 
+        })
+        this.setState({ posts })
+      })
+      .catch( err => {
+        console.log(err);
+      })
+  }
+
   render() {
     return(
       <PostContext.Provider value={{
@@ -47,7 +63,7 @@ class PostProvider extends Component {
       getAllBlogPost: this.getAllBlogPost,
       addPost: this.addPost,
       deletePost: this.deletePost,
-      // updateItem: this.updateItem,
+      updatePost: this.updatePost,
       }}>
         { this.props.children }
       </PostContext.Provider>
