@@ -48,8 +48,6 @@ class PostForm extends Component {
           onChange={this.handleChange}
           required
           label='Body'
-          // type="text" 
-          // step="0.01"
         />
         <Form.Input
           name='pic'

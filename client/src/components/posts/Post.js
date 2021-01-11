@@ -21,12 +21,12 @@ class Post extends Component {
                   </Card.Description>
                 </Card.Content>
                 <Card.Content extra>
-                    <Button icon='trash' color='red' onClick={() => deletePost(blogId, id)} />
+                    <Button icon='trash' color='black' onClick={() => deletePost(blogId, id)} />
                     <Modal
                       onClose={() => this.setOpen(false)}
                       onOpen={() => this.setOpen(true)}
                       open={open}
-                      trigger={<Button icon='pencil' color='yellow' />}
+                      trigger={<Button icon='pencil' color='black' />}
                     >
                        <Modal.Header>Edit Blog Post</Modal.Header>
                        <Modal.Content >

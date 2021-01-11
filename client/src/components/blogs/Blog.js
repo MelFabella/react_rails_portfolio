@@ -4,6 +4,7 @@ import axios from 'axios';
 import { BlogConsumer } from '../../providers/BlogProvider';
 import { Button, Icon } from 'semantic-ui-react';
 import BlogForm from './BlogForm';
+import Moment from 'react-moment';
 
 class Blog extends Component {
   state = { id: 0, title: '', created_at: '', updated_at: '', editing: false }
@@ -31,8 +32,8 @@ class Blog extends Component {
     return(
       <>
         <h1>{title}</h1>
-        <h5>{updated_at}</h5>
-        <Button icon color = 'red' onClick={() => deleteBlog(id)}>
+        <h5>Last updated: <Moment format="MM/DD/YYYY">{updated_at}</Moment></h5>
+        <Button icon color = 'black' onClick={() => deleteBlog(id)}>
           <Icon name='trash' />
         </Button>
         { 
@@ -44,7 +45,7 @@ class Blog extends Component {
               updateBlog={updateBlog}
             />
           :
-          <Button icon color='yellow' onClick={() => this.toggleEdit()}>
+          <Button icon color='black' onClick={() => this.toggleEdit()}>
             <Icon name='pencil' />
           </Button>
         }
